@@ -23,7 +23,7 @@ There are no other squares for $4072 < n < 3 \cdot 10^8$.
 ## How it was checked
 
 1. `verify/a105720.py` streams primes through a segmented sieve and tests every $a(n)$ for
-   $n < 3 \cdot 10^8$. It finds the known squares at 3, 6, 4072 and the new one.
+   $0 < n < 3 \cdot 10^8$. It finds the known squares at 3, 6, 4072 and the new one.
 2. `verify/verify_a105720.py` is a separate odd-only sieve that sums $p_n, \dots, p_{2n}$ with exact
    integers and takes the integer square root.
 3. `verify/verify_sympy.py` uses SymPy: both endpoints are prime, and $\pi(p_n) = 111008771$,
@@ -44,7 +44,8 @@ python3 verify/verify_sympy.py     # SymPy
 
 No `sorry`; only Lean's standard axioms (`lake env lean Check.lean` prints them).
 Lean does **not** compute $a(111008771)$ itself: that is a sum of about $1.1 \cdot 10^8$ primes, out of
-reach for the kernel. That single value is what the three programs above establish.
+reach for the kernel. That single value is what programs 1 and 2 compute; program 3 independently checks the
+endpoint primes and their indices.
 
 ```bash
 lake exe cache get   # Mathlib v4.36.0
