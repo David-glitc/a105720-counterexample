@@ -1,0 +1,11 @@
+name = "A105720"
+version = "0.1.0"
+defaultTargets = ["A105720"]
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+git = "https://github.com/leanprover-community/mathlib4"
+rev = "v4.36.0"
+[[lean_lib]]
+name = "A105720"
